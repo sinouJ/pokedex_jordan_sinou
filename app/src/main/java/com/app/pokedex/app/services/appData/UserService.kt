@@ -20,11 +20,6 @@ class UserService @Inject constructor(
     val authState: LiveData<AuthState> = _authState
 
     fun isLoaded() {
-//        val response = appService.fetchCharacters()
-//        println(response)
-//        if (response != null) {
-//            _authState.postValue(AuthState.Loaded)
-//        }
         _authState.postValue(AuthState.Loaded)
     }
 }

@@ -16,5 +16,6 @@ fun ComposableView(composableVM: ComposableViewModel = hiltViewModel()) {
     when (authState) {
         UserService.AuthState.Splash -> SplashView()
         UserService.AuthState.Loaded -> AppControllerView()
+        null -> SplashView() // TODO: ErrorView()
     }
 }

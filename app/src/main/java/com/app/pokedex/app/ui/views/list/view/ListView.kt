@@ -8,6 +8,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.app.pokedex.app.ui.components.RotateLoader
 import com.app.pokedex.app.ui.views.list.viewModels.ListViewModel
 
 @Composable
@@ -18,14 +19,21 @@ fun ListView(
 
     val pokemons by ListVM.pokemons.collectAsState()
 
-    Column() {
+    Column {
         Text("List")
 
         LazyColumn() {
-            pokemons.forEach {
+            if (pokemons.isNotEmpty()) {
+                pokemons.forEach {
+                    item {
+                        Text(text = it.name)
+                        Text(text = it.url)
+                    }
+                }
+            }
+            else {
                 item {
-                    Text(text = it.name)
-                    Text(text = it.url)
+                    RotateLoader()
                 }
             }
         }
