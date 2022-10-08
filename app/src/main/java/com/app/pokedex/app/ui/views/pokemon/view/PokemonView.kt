@@ -37,21 +37,21 @@ fun PokemonView(
 
         val weight = pokemon!!.weight.toDouble() / 10
         val height = pokemon!!.height.toDouble() / 10
-        var pokemon_id = ""
+        var pokemonId = ""
 
         if(pokemon!!.id.toDouble() < 10) {
             println("less than 10")
-            pokemon_id = "#00$id"
+            pokemonId = "#00$id"
         }
 
         if(pokemon!!.id.toDouble() >= 10 && pokemon!!.id.toDouble() < 100) {
             println("between 10 and 100")
-            pokemon_id = "#0$id"
+            pokemonId = "#0$id"
         }
 
         if (pokemon!!.id.toDouble() >= 100) {
             println("more")
-            pokemon_id = "#$id"
+            pokemonId = "#$id"
         }
 
         Column {
@@ -97,7 +97,7 @@ fun PokemonView(
                         )
 
                         Text(
-                            text = pokemon_id
+                            text = pokemonId
                         )
                         Spacer(modifier = Modifier.height(20.dp))
 
