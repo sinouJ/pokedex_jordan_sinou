@@ -1,5 +1,6 @@
 package com.app.pokedex.app.ui.views.list.view
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
@@ -10,10 +11,12 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.app.pokedex.R
 import com.app.pokedex.app.ui.components.RotateLoader
 import com.app.pokedex.app.ui.components.TitleText
 import com.app.pokedex.app.ui.views.list.viewModels.ListViewModel
@@ -27,6 +30,12 @@ fun ListView(
 
     val pokemons by ListVM.pokemons.collectAsState()
     val titleText = "Les pokémon"
+
+    Image(
+        painter = painterResource(id = R.drawable.redball),
+        contentDescription = "ok",
+        modifier = Modifier.fillMaxSize()
+    )
 
     Column (
         modifier = Modifier
