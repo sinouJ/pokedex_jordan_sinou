@@ -14,6 +14,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -70,7 +71,7 @@ fun AppControllerView() {
             composable(
                 AppViewState.PokemonView.route + "{id}"
             ) { backStackEntry ->
-                backStackEntry.arguments?.getString("id")?.let { it1 -> PokemonView(id = it1) }
+                backStackEntry.arguments?.getString("id")?.let { it1 -> PokemonView(id = it1, navController = navController) }
             }
         }
     }
