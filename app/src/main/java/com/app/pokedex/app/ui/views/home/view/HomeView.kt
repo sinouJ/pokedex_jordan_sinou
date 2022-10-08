@@ -9,20 +9,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
 import com.app.pokedex.R
 
 @Composable
 fun HomeView(
-    navController: NavHostController
+    navController: NavHostController,
+    name: String
 ) {
+
     val title = "Bienvenue dresseur"
-    val name = "Jordan"
     val text = "Rechercher un pokemon"
 
     Image(
         painter = painterResource(id = R.drawable.masterball),
-        contentDescription = "ok",
+        contentDescription = "masterball",
         modifier = Modifier.fillMaxSize()
     )
 
@@ -40,4 +49,5 @@ fun HomeView(
             )
         }
     }
+
 }

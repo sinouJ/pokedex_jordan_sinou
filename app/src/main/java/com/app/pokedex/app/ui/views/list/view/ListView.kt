@@ -33,7 +33,7 @@ fun ListView(
 
     Image(
         painter = painterResource(id = R.drawable.redball),
-        contentDescription = "ok",
+        contentDescription = "pokeball classique",
         modifier = Modifier.fillMaxSize()
     )
 

@@ -14,11 +14,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.app.pokedex.app.common.ui.theme.PokedexTheme
+import com.app.pokedex.app.ui.views.dresseur.view.DresseurView
 import com.app.pokedex.app.ui.views.home.view.HomeView
 import com.app.pokedex.app.ui.views.list.view.ListView
 import com.app.pokedex.app.ui.views.pokemon.view.PokemonView
@@ -27,6 +26,7 @@ sealed class AppViewState(val route: String, val name: String, var icon: ImageVe
     object HomeView : AppViewState("home", name = "Home", Icons.Filled.Home, Icons.Outlined.Home)
     object ListView : AppViewState("list", name = "Recherche", Icons.Outlined.Search, Icons.Default.Search)
     object PokemonView : AppViewState("pokemon", name = "Pokemon", icon = Icons.Outlined.People, iconSelected = Icons.Default.People)
+    object DresseurView : AppViewState("dresseur", "Dresseur", icon = Icons.Outlined.People, iconSelected = Icons.Default.People)
 }
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -41,6 +41,7 @@ fun AppControllerView() {
 
     val routeWithoutNavbar = remember {
         listOf(AppViewState.PokemonView.route)
+        listOf(AppViewState.DresseurView.route)
     }
 
     LaunchedEffect(navController) {
@@ -51,21 +52,27 @@ fun AppControllerView() {
 
     LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, _, _ ->
-            currentRoute.value = navController.currentBackStackEntry?.destination?.route ?: AppViewState.HomeView.route
+            currentRoute.value = navController.currentBackStackEntry?.destination?.route ?: AppViewState.ListView.route
         }
     }
+
     Scaffold(
         bottomBar = {
             AppBottomBar(navController)
         }
     ) {
-        NavHost(navController = navController, startDestination = AppViewState.HomeView.route) {
-            composable(AppViewState.HomeView.route) {
-                HomeView(navController = navController)
+        NavHost(navController = navController, startDestination = AppViewState.DresseurView.route) {
+            composable(AppViewState.HomeView.route + "{name}") {
+                backStackEntry ->
+                backStackEntry.arguments?.getString("name")?.let { it1 -> HomeView(name = it1, navController = navController) }
             }
             
             composable(AppViewState.ListView.route) {
                 ListView(navController = navController)
+            }
+
+            composable(AppViewState.DresseurView.route) {
+                DresseurView(navController = navController)
             }
 
             composable(
