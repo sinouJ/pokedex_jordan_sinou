@@ -1,11 +1,12 @@
 package com.app.pokedex.app.models
 
-data class ResultPokemons(
-    val count: Number,
-    val results: List<PokemonDTO>
+data class ResultPokemonDTO (
+    val name: String,
+    val height : Number,
+    val sprites : Sprites
 ) {
-    data class PokemonDTO (
-        val name: String,
-        val url: String
+    data class Sprites (
+        val front_default : String,
+        val front_shiny : String
     )
 }

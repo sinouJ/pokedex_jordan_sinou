@@ -1,5 +1,6 @@
 package com.app.pokedex.app.common.api
 
+import com.app.pokedex.app.models.ResultPokemonDTO
 import com.app.pokedex.app.models.ResultPokemons
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,4 +24,6 @@ interface ApiService {
     @GET("pokemon?offset=0&limit=1154")
     suspend fun getPokemons(): ResultPokemons?
 
+    @GET("pokemon/{id}")
+    suspend fun getPokemon(@Path("id") id: String): ResultPokemonDTO
 }

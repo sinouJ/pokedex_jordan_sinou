@@ -3,6 +3,7 @@ package com.app.pokedex.app.ui.components
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,11 +19,9 @@ fun TitleText(title: String, name: String = "") {
             .fillMaxWidth()
     ) {
         Text(
-            text = "$title, $name",
-            fontSize = 32.sp,
-            fontWeight = FontWeight.ExtraBold,
-            softWrap = true,
-            lineHeight = 50.sp
+            text = "$title $name",
+            style = MaterialTheme.typography.h2,
+            lineHeight = 65.sp
         )
     }
 }
