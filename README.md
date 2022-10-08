@@ -1,5 +1,7 @@
 # pokedex_jordan_sinou
 
+Cette app Android est un pokedex permettant de consulter les infos des pokemons de toutes les générations. 
+
 ## Pages
 ---
 
