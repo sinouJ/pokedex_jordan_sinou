@@ -3,6 +3,13 @@
 Cette app Android est un pokedex permettant de consulter les infos des pokemons de toutes les générations. 
 Les données proviennent de l'API pokeapi.co
 
+## Stack technique
+- API externe : pokeapi.co
+- Android jetpack compose
+- UI Material design
+- API Android = 33 (Tiramisu)
+- Kotlin
+
 ## Pages
 ---
 
