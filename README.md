@@ -33,6 +33,16 @@ Détails du pokemon et représentation :
 - Types
 - Stats
 
+## Organisation
+---
+- Services permettant de gérer la gestion des données au sein de l'app
+- Chaque package est organisé en 2 parties : view et viewModel
+  - la partie view contient plutôt la partie UI
+  - la partie viewModel contient la logique du code et ce qui concerne la récupération de données
+- Un fichier Theme qui va centraliser tous les éléments graphiques de l'application
+- Des models permettant d'organiser les données récupérées par l'API externe
+
+
 ## Bugs
 ---
 ~~Cliquer sur Home dans la navbar provoque le crash de l'app dû à la route dynamique permettant d'afficher le nom du dresseur~~ (Corrigé)
