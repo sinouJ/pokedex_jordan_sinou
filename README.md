@@ -1,7 +1,15 @@
 # pokedex_jordan_sinou
 
 Cette app Android est un pokedex permettant de consulter les infos des pokemons de toutes les générations. 
-Les données proviennent de l'API pokeapi.co
+Les données proviennent de l'API [pokeapi](pokeapi.co)
+
+## Stack technique
+---
+- API externe : [pokeapi.co](pokeapi.co)
+- Android jetpack compose
+- UI Material design
+- API Android = 33 (Tiramisu)
+- Kotlin
 
 ## Pages
 ---
@@ -27,4 +35,4 @@ Détails du pokemon et représentation :
 
 ## Bugs
 ---
-Cliquer sur Home dans la navbar provoque le crash de l'app dû à la route dynamique permettant d'afficher le nom du dresseur
+~~Cliquer sur Home dans la navbar provoque le crash de l'app dû à la route dynamique permettant d'afficher le nom du dresseur~~ (Corrigé)
