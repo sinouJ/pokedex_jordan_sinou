@@ -12,19 +12,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.app.pokedex.app.common.api.AppService
+import com.app.pokedex.app.ui.views.dresseur.viewModels.DresseurViewModel
 
 @Composable
 fun DresseurView (
-    navController: NavHostController
+    navController: NavHostController,
+    DresseurVM: DresseurViewModel = hiltViewModel()
 ) {
 
     var name: String by rememberSaveable { mutableStateOf("") }
 
     Row(
-    Modifier
-    .padding(15.dp)
-    .fillMaxWidth()) {
+        Modifier
+            .padding(15.dp)
+            .fillMaxWidth()) {
         TextField(
             value = name,
             onValueChange = {
@@ -34,7 +38,9 @@ fun DresseurView (
         )
         Spacer(modifier = Modifier.width(10.dp))
         Button(onClick = {
-            navController.navigate("home" + name)
+//            navController.navigate("home" + name)
+            DresseurVM.dresseurName(name)
+            navController.navigate("home")
         }) {
             Text(text = "Valider", style = MaterialTheme.typography.button)
         }

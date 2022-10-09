@@ -62,9 +62,8 @@ fun AppControllerView() {
         }
     ) {
         NavHost(navController = navController, startDestination = AppViewState.DresseurView.route) {
-            composable(AppViewState.HomeView.route + "{name}") {
-                backStackEntry ->
-                backStackEntry.arguments?.getString("name")?.let { it1 -> HomeView(name = it1, navController = navController) }
+            composable(AppViewState.HomeView.route) {
+                HomeView(navController = navController)
             }
             
             composable(AppViewState.ListView.route) {

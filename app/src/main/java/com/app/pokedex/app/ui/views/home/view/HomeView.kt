@@ -1,6 +1,5 @@
 package com.app.pokedex.app.ui.views.home.view
 
-import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.app.pokedex.app.ui.components.ButtonNavigation
 import com.app.pokedex.app.ui.components.TitleText
@@ -13,21 +12,30 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.app.pokedex.R
+import com.app.pokedex.app.ui.views.home.viewModels.HomeViewModels
 
 @Composable
 fun HomeView(
     navController: NavHostController,
-    name: String
+    HomeVM: HomeViewModels = hiltViewModel()
 ) {
 
     val title = "Bienvenue dresseur"
     val text = "Rechercher un pokemon"
+
+    val dresseurName by HomeVM.dresseur.collectAsState()
+
+
+    println("----------------SET----------------")
+    println("---------------SET-----------------")
+    println(dresseurName)
+    println("--------------SET------------------")
+    println("--------------SET------------------")
 
     Image(
         painter = painterResource(id = R.drawable.masterball),
@@ -36,7 +44,7 @@ fun HomeView(
     )
 
     Column() {
-        TitleText(title = title, name = name)
+        TitleText(title = title, name = dresseurName)
         Column(
             modifier = Modifier
                 .fillMaxWidth()

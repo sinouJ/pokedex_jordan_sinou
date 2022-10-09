@@ -6,9 +6,13 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppService @Inject constructor() {
+class AppService @Inject constructor(
+
+) {
 
     private var apiService : ApiService = ApiService.getInstance()
+
+    private var dresseurName: String = ""
 
     suspend fun fetchPokemons(): ResultPokemons? {
         println(callApiNoCatch { apiService.getPokemons() })
@@ -21,5 +25,15 @@ class AppService @Inject constructor() {
         return callApiNoCatch {
             apiService.getPokemon(id,)
         }
+    }
+
+    suspend fun dresseurName(name: String) {
+        dresseurName = name
+        return
+    }
+
+    suspend fun getDresseurName(): String {
+        println(dresseurName)
+        return dresseurName
     }
 }
